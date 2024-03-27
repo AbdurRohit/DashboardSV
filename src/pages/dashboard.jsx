@@ -20,6 +20,8 @@ import NotificationsIcon from '@mui/icons-material/Notifications';
 import { mainListItems} from '../components/SidebarLists';
 import Charts from '../components/Charts';
 import Comments from '../components/TopComments';
+import UploadTable from '../components/UploadTable';
+// import RalewayWoff2 from './fonts/Raleway-Regular.woff2';
 
 
 function Copyright(props) {
@@ -118,6 +120,7 @@ export default function Dashboard() {
               color="inherit"
               noWrap
               sx={{ flexGrow: 1 }}
+              fontFamily={''}
             >
              News2Day
             </Typography>
@@ -188,10 +191,10 @@ export default function Dashboard() {
                     <Comments/>
                 </Paper>
               </Grid>
-              {/* Recent Orders */}
               <Grid item xs={12}>
                 <Paper sx={{ p: 2, display: 'flex', flexDirection: 'column' }}>
-                  {/* <Orders /> */}
+              Recent Uploads
+                  <UploadTable/>
                 </Paper>
               </Grid>
             </Grid>
