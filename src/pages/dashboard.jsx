@@ -194,7 +194,8 @@ export default function Dashboard() {
               <Grid item xs={12}>
                 <Paper sx={{ p: 2, display: 'flex', flexDirection: 'column' }}>
               Recent Uploads
-                  <UploadTable/>
+                  <UploadTable/>  
+                  {/* Importing the tabel component */}
                 </Paper>
               </Grid>
             </Grid>

@@ -7,8 +7,13 @@ import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TablePagination from '@mui/material/TablePagination';
 import TableRow from '@mui/material/TableRow';
+import EditNoteIcon from '@mui/icons-material/EditNote';
+import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
+import Button from '@mui/material/Button';
+import RemoveRedEyeIcon from '@mui/icons-material/RemoveRedEye';
 
 const columns = [
+  { id: 'no', label: 'No.', minWidth: 60 },
   { id: 'title', label: 'Title', minWidth: 170 },
   { id: 'content', label: 'Content', minWidth: 200 },
   {
@@ -28,13 +33,13 @@ const columns = [
  
 ];
 
-function createData(title, content, views, options) {
-  return { title, content, views, options};
+function createData(no, title, content, views, options) {
+  return { no, title, content, views, options};
 }
 
 const rows = [
-  createData('India', 'IN', 1324171354, { edit: 'Edit', view: 'View', delete: 'Delete' }),
-
+  createData(1,'India', 'IN', 1324171354, { edit: 'Edit', view: 'View', delete: 'Delete' }),
+  createData(2,'India', 'IN', 1324171354, { edit: 'Edit', view: 'View', delete: 'Delete' }),
 ];
 
 export default function StickyHeadTable() {
@@ -80,9 +85,9 @@ export default function StickyHeadTable() {
 
 {column.id === 'options' ? (
                         <div>
-                          <button>{row.options.edit}</button>
-                          <button>{row.options.view}</button>
-                          <button>{row.options.delete}</button>
+                          <Button><EditNoteIcon/></Button>
+                          <Button><RemoveRedEyeIcon/></Button>
+                          <Button><DeleteForeverIcon/></Button>
                         </div>
                       ) : (
                         column.format && typeof value === 'number' ? column.format(value) : value
