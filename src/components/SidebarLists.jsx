@@ -13,7 +13,7 @@ import Divider from '@mui/material/Divider';
 
 
 export const mainListItems = (
-    <React.Fragment sx={{ my: 3 }}>
+    <React.Fragment>
       <ListItemButton>
         <ListItemIcon>
           <DashboardIcon />
