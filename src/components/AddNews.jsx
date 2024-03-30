@@ -94,6 +94,7 @@ const AddNews = () => {
       handleAlert();
       return;
     }
+    handleSnackbar()
 
     const newRow = {
       id: rowsArray.length + 1,
@@ -217,8 +218,8 @@ const AddNews = () => {
       autoHideDuration={6000}
       onClose={handleCloseSnackbar}
       message={"News Uploaded"}
-
     />
+
     <Box mt={4}>
       <Typography variant="h5">Mobile Preview</Typography>
       <Card sx={{ maxWidth: 345 }}>

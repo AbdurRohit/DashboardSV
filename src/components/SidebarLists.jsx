@@ -34,9 +34,9 @@ export const mainListItems = (
           <AddchartIcon/>
         </ListItemIcon>
         <ListItemText primary="Add News" />
-      </ListItemButton>
+      </ListItemButton >
       <Divider sx={{ my: 3 }} />
-      <ListItemButton>
+      <ListItemButton component={Link} to="/show-report">
         <ListItemIcon>
           <BarChartIcon />
         </ListItemIcon>

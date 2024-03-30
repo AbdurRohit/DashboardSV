@@ -4,6 +4,8 @@ import { Routes, Route, BrowserRouter } from "react-router-dom";
 import { createContext, useState } from "react";
 import TrendingNews from "./pages/TrendingNews";
 import AddNewsPage from "./pages/AddNewsPage";
+import ShowReport from "./pages/ShowReport"; 
+
 const NewsDataContext = createContext();
 
 function App() {
@@ -309,6 +311,12 @@ function App() {
        <Route path="/add-news" element={
          <NewsDataContext.Provider value={{ rowsArray, updateArray }}> 
          <AddNewsPage />
+         </NewsDataContext.Provider>} />
+      
+
+      <Route path="/show-report" element={
+         <NewsDataContext.Provider value={{ rowsArray, updateArray }}> 
+         <ShowReport />
          </NewsDataContext.Provider>} />
       </Routes>
     </BrowserRouter>
