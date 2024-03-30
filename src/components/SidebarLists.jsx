@@ -43,7 +43,7 @@ export const mainListItems = (
         <ListItemText primary="News Report" />
       </ListItemButton>
       <Divider sx={{ my: 3 }} />
-      <ListItemButton>
+      <ListItemButton component={Link} to="/manage-content">
         <ListItemIcon>
           <ManageHistoryIcon />
         </ListItemIcon>

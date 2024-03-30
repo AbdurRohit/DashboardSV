@@ -5,6 +5,7 @@ import { createContext, useState } from "react";
 import TrendingNews from "./pages/TrendingNews";
 import AddNewsPage from "./pages/AddNewsPage";
 import ShowReport from "./pages/ShowReport"; 
+import ManangeContent from "./pages/ManageContend";
 
 const NewsDataContext = createContext();
 
@@ -313,11 +314,16 @@ function App() {
          <AddNewsPage />
          </NewsDataContext.Provider>} />
       
-
       <Route path="/show-report" element={
          <NewsDataContext.Provider value={{ rowsArray, updateArray }}> 
          <ShowReport />
          </NewsDataContext.Provider>} />
+
+      <Route path="/manage-content" element={
+        <NewsDataContext.Provider value={{ rowsArray, updateArray }}> 
+         <ManangeContent />
+         </NewsDataContext.Provider>} />  
+      
       </Routes>
     </BrowserRouter>
   );
