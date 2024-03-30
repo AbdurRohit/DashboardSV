@@ -29,7 +29,7 @@ export const mainListItems = (
         <ListItemText primary="Trendig News" />
       </ListItemButton>
       <Divider sx={{ my: 3 }} />
-      <ListItemButton >
+      <ListItemButton component={Link} to="/add-news" >
         <ListItemIcon>
           <AddchartIcon/>
         </ListItemIcon>

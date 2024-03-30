@@ -1,7 +1,5 @@
-import React, { useContext } from 'react';
-import { NewsDataContext } from '../App';
-import {Typography, Grid } from '@mui/material';
-import Paper from '@mui/material/Paper';
+import React from 'react';
+import {Typography} from '@mui/material';
 import CssBaseline from '@mui/material/CssBaseline';
 import Box from '@mui/material/Box';
 import Toolbar from '@mui/material/Toolbar';
@@ -15,11 +13,10 @@ import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
 import NotificationsIcon from '@mui/icons-material/Notifications';
 import { mainListItems} from '../components/SidebarLists';
 import { Link } from 'react-router-dom';
-import Card from '@mui/material/Card';
-import CardContent from '@mui/material/CardContent';
 import { styled, createTheme, ThemeProvider } from '@mui/material/styles';
 import MuiAppBar from '@mui/material/AppBar';
 import MuiDrawer from '@mui/material/Drawer';
+import AddNews from '../components/AddNews';
 
 const defaultTheme = createTheme();
 const drawerWidth = 240;
@@ -82,18 +79,13 @@ function Copyright(props) {
 }
 
 
-const TrendingNews = () => {
+const AddNewsPage = () => {
+
   const [open, setOpen] = React.useState(true);
   const toggleDrawer = () => {
     setOpen(!open);
   };
-    const { rowsArray } = useContext(NewsDataContext);
-  
-    // Sort the rows by views in descending order
-    const sortedRows = rowsArray.sort((a, b) => b.views - a.views);
-  
-    // Get the top 3 trending news
-    const topTrendingNews = sortedRows.slice(0, 3);
+   
   
     return (
       <ThemeProvider theme={defaultTheme}>
@@ -102,7 +94,7 @@ const TrendingNews = () => {
         <AppBar position="absolute" open={open}>
           <Toolbar
             sx={{
-              pr: '24px', // keep right padding when drawer closed
+              pr: '24px', 
             }}
           >
             <IconButton
@@ -167,28 +159,7 @@ const TrendingNews = () => {
         >
           <Toolbar />
           <Container maxWidth="lg" sx={{ mt: 4, mb: 4 }}>
-
-      <Typography variant="h2" >Trending News</Typography>  
-      <Grid container spacing={5} >
-        {topTrendingNews.map((news) => (
-          <Grid item xs={12} sm={6} md={4} mt={10} key={news.id}>
-            <Card >
-                <Paper sx={{ p: 2, display: 'flex', flexDirection: 'row' }}>
-                
-                <CardContent>
-                <Typography variant="h6" >{news.title}</Typography>
-                <Typography variant="body2" color="textSecondary">
-                  {news.content}
-                </Typography>
-                <Typography variant="subtitle2" color="textSecondary">
-                  Views: {news.views}
-                </Typography>
-                </CardContent>
-                </Paper>
-            </Card>
-          </Grid>
-        ))}
-      </Grid>
+          <AddNews/> 
       <Copyright sx={{ pt: 4 }} />
 
           </Container>
@@ -201,4 +172,4 @@ const TrendingNews = () => {
     );
   };
   
-  export default TrendingNews;
+  export default AddNewsPage;
