@@ -21,7 +21,11 @@ import { styled, createTheme, ThemeProvider } from '@mui/material/styles';
 import MuiAppBar from '@mui/material/AppBar';
 import MuiDrawer from '@mui/material/Drawer';
 
-const defaultTheme = createTheme();
+const defaultTheme = createTheme({
+  typography: {
+    fontFamily: 'poppins',
+  },
+});
 const drawerWidth = 240;
 
 const AppBar = styled(MuiAppBar, {

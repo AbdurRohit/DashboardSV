@@ -18,7 +18,11 @@ import MuiAppBar from '@mui/material/AppBar';
 import MuiDrawer from '@mui/material/Drawer';
 import AddNews from '../components/AddNews';
 
-const defaultTheme = createTheme();
+const defaultTheme = createTheme({
+  typography: {
+    fontFamily: 'poppins',
+  },
+});
 const drawerWidth = 240;
 
 const AppBar = styled(MuiAppBar, {
