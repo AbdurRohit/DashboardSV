@@ -1,41 +1,27 @@
-import * as React from 'react';
-import { styled, createTheme, ThemeProvider } from '@mui/material/styles';
+import React, { useContext } from 'react';
+import { NewsDataContext } from '../App';
+import {Typography, Grid } from '@mui/material';
+import Paper from '@mui/material/Paper';
 import CssBaseline from '@mui/material/CssBaseline';
-import MuiDrawer from '@mui/material/Drawer';
 import Box from '@mui/material/Box';
-import MuiAppBar from '@mui/material/AppBar';
 import Toolbar from '@mui/material/Toolbar';
 import List from '@mui/material/List';
-import Typography from '@mui/material/Typography';
 import Divider from '@mui/material/Divider';
 import IconButton from '@mui/material/IconButton';
 import Badge from '@mui/material/Badge';
 import Container from '@mui/material/Container';
-import Grid from '@mui/material/Grid';
-import Paper from '@mui/material/Paper';
-import Link from '@mui/material/Link';
 import MenuIcon from '@mui/icons-material/Menu';
 import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
 import NotificationsIcon from '@mui/icons-material/Notifications';
 import { mainListItems} from '../components/SidebarLists';
-import Charts from '../components/Charts';
-import Comments from '../components/TopComments';
-import UploadTable from '../components/UploadTable';
+import { Link } from 'react-router-dom';
+import Card from '@mui/material/Card';
+import CardContent from '@mui/material/CardContent';
+import { styled, createTheme, ThemeProvider } from '@mui/material/styles';
+import MuiAppBar from '@mui/material/AppBar';
+import MuiDrawer from '@mui/material/Drawer';
 
-
-function Copyright(props) {
-  return (
-    <Typography variant="body2" color="text.secondary" align="center" {...props}>
-      {'Copyright © '}
-      <Link color="inherit" href="https://github.com/abdurrohit">
-        AbdurRohit
-      </Link>{' '}
-      {new Date().getFullYear()}
-      {'.'}
-    </Typography>
-  );
-}
-
+const defaultTheme = createTheme();
 const drawerWidth = 240;
 
 const AppBar = styled(MuiAppBar, {
@@ -82,18 +68,35 @@ const Drawer = styled(MuiDrawer, { shouldForwardProp: (prop) => prop !== 'open' 
   }),
 );
 
+function Copyright(props) {
+  return (
+    <Typography variant="body2" color="text.secondary" align="center" {...props}>
+      {'Copyright © '}
+      <Link color="inherit" href="https://github.com/abdurrohit">
+        AbdurRohit
+      </Link>{' '}
+      {new Date().getFullYear()}
+      {'.'}
+    </Typography>
+  );
+}
 
-const defaultTheme = createTheme();
 
-export default function Dashboard() {
-
+const TrendingNews = () => {
   const [open, setOpen] = React.useState(true);
   const toggleDrawer = () => {
     setOpen(!open);
   };
-
-  return (
-    <ThemeProvider theme={defaultTheme}>
+    const { rowsArray } = useContext(NewsDataContext);
+  
+    // Sort the rows by views in descending order
+    const sortedRows = rowsArray.sort((a, b) => b.views - a.views);
+  
+    // Get the top 3 trending news
+    const topTrendingNews = sortedRows.slice(0, 3);
+  
+    return (
+      <ThemeProvider theme={defaultTheme}>
       <Box sx={{ display: 'flex' }}>
         <CssBaseline />
         <AppBar position="absolute" open={open}>
@@ -164,46 +167,38 @@ export default function Dashboard() {
         >
           <Toolbar />
           <Container maxWidth="lg" sx={{ mt: 4, mb: 4 }}>
-            <Grid container spacing={3}>
-              <Grid item xs={12} md={8} lg={9}>
-                <Paper
-                  sx={{
-                    p: 2,
-                    display: 'flex',
-                    flexDirection: 'column',
-                    height: 300,
-                  }}
-                  >
-                  News Stats
-                  <Charts />
+
+      <Typography variant="h1" >Trending News</Typography>  
+      <Grid container spacing={5} >
+        {topTrendingNews.map((news) => (
+          <Grid item xs={12} sm={6} md={4} mt={10} key={news.id}>
+            <Card >
+                <Paper sx={{ p: 2, display: 'flex', flexDirection: 'row' }}>
+                
+                <CardContent>
+                <Typography variant="h6" >{news.title}</Typography>
+                <Typography variant="body2" color="textSecondary">
+                  {news.content}
+                </Typography>
+                <Typography variant="subtitle2" color="textSecondary">
+                  Views: {news.views}
+                </Typography>
+                </CardContent>
                 </Paper>
-              </Grid>
-              <Grid item xs={12} md={4} lg={3}>
-                <Paper
-                  sx={{
-                    p: 1,
-                    display: 'flex',
-                    flexDirection: 'column',
-                    height: 300,
-                  }}
-                  >
-                  Top Comments  
-                    <Comments/>
-                </Paper>
-              </Grid>
-              <Grid item xs={12}>
-                <Paper sx={{ p: 2, display: 'flex', flexDirection: 'column' }}>
-              Recent Uploads
-           
-                  <UploadTable/>  
-                  {/* Importing the tabel component */}
-                </Paper>
-              </Grid>
-            </Grid>
-            <Copyright sx={{ pt: 4 }} />
+            </Card>
+          </Grid>
+        ))}
+      </Grid>
+      <Copyright sx={{ pt: 4 }} />
+
           </Container>
         </Box>
       </Box>
     </ThemeProvider>
-  );
-}
+
+    
+      
+    );
+  };
+  
+  export default TrendingNews;

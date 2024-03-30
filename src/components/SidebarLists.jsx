@@ -10,25 +10,26 @@ import TrendingUpIcon from '@mui/icons-material/TrendingUp';
 import ManageHistoryIcon from '@mui/icons-material/ManageHistory';
 import AddchartIcon from '@mui/icons-material/Addchart';
 import Divider from '@mui/material/Divider';
+import { Link } from 'react-router-dom';
 
 
 export const mainListItems = (
     <React.Fragment>
-      <ListItemButton>
+      <ListItemButton component={Link} to="/">
         <ListItemIcon>
           <DashboardIcon />
         </ListItemIcon>
         <ListItemText primary="Activity" />
       </ListItemButton>
       <Divider sx={{ my: 3 }} />
-      <ListItemButton>
+      <ListItemButton component={Link} to="/trending-news">
         <ListItemIcon>
           <TrendingUpIcon/>
         </ListItemIcon>
         <ListItemText primary="Trendig News" />
       </ListItemButton>
       <Divider sx={{ my: 3 }} />
-      <ListItemButton>
+      <ListItemButton >
         <ListItemIcon>
           <AddchartIcon/>
         </ListItemIcon>
