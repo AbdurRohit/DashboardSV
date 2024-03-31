@@ -1,8 +1,7 @@
-# Dashboard for News2Day
+# Admin dashboard for News
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-## Installation guide
+# Installation guide
 
 In the project directory, you can run:
 ### `npm install`
@@ -33,8 +32,44 @@ See the section about [deployment](https://facebook.github.io/create-react-app/d
 # Dashboard 
 
 ## Activity: 
-provides quick access to key
+Provides quick access to key
 metrics and functionalities of the admin panel. This could include user activity, content statistics, and quick links to manage news feeds, view performance reports,top performed news, top shared news, top commented news, etc.
+![Main Page](./images/image101.png)
+
+## Trending News
+Top 3 trending news. Comparing the views count.
+![alt text](Trending.png)
+
+## Add News
+Add title, Content, ./images/image and Video for new news.
+![alt text](./images/image.png)
+
+### Mobile preview
+A mobile preview screen, enabling
+administrators/sub-editors/content writers to see how the news feed will appear on mobile devices before publishing.
+![alt text](./images/image-1.png)
+
+## News report
+A bar graph ploted with detailed analysis with views as respect to the news catagory.
+![alt text](./images/image-2.png)
+
+## Manage content 
+All uploaded news with options to view analytics, edit, and delete the news.
+
+### News analytics
+![alt text](./images/image-3.png)
+
+### Edit uploaded news
+![alt text](./images/image-5.png)
+
+# Code structure
+Used Context API to pass the news data among all the components.
+![alt text](./images/Code1.png)
+
+Seperate components and pages. Using `useContext` inside child component to recive the array and passing `updateArray` functions to update the array as needed.
+![alt text](./images/Code2.png)
+
+# API call
+Inside the App.js file cahange the rows data array with a `fetch API` call and from backend and change the value parameters. 
 
 
-##
