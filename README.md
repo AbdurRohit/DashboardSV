@@ -38,7 +38,7 @@ metrics and functionalities of the admin panel. This could include user activity
 
 ## Trending News
 Top 3 trending news. Comparing the views count.
-![alt text](Trending.png)
+![alt text](./images/Trending.png)
 
 ## Add News
 Add title, Content, ./images/image and Video for new news.
